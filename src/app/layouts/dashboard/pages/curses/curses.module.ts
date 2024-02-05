@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { ModificarProfesorCursoComponent } from './components/modificar-profesor-curso/modificar-profesor-curso.component';
+import { ModificarEstudianteCursoComponent } from './components/modificar-estudiante-curso/modificar-estudiante-curso.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { MatInputModule } from '@angular/material/input';
     CursesComponent,
     CurseFormCrearComponent,
     AsignacionProfesorMateriaComponent,
-    InscripcionEstudianteMateriaComponent
+    InscripcionEstudianteMateriaComponent,
+    ModificarProfesorCursoComponent,
+    ModificarEstudianteCursoComponent
   ],
   imports: [
     CommonModule,

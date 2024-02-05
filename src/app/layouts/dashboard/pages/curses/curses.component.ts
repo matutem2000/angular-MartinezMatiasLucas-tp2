@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Curse } from './models/curses.interfaces';
-import { MatTableDataSource } from '@angular/material/table';
 import { LoadingService } from '../../../../core/services/loading.service';
 import { CurseDataService } from '../../../../core/services/curse-data.service';
 import { MatDialog } from '@angular/material/dialog';
-import { InscripcionEstudianteMateriaComponent } from './components/inscripcion-estudiante-materia/inscripcion-estudiante-materia.component';
 import { CurseFormCrearComponent } from './components/curse-form-crear/curse-form-crear.component';
 
 

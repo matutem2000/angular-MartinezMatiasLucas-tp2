@@ -1,20 +1,54 @@
-<h2>Agregar Nuevo Curso</h2>
+<h2>Asignar profesor a curso</h2>
 
 <mat-form-field>
   <mat-label>Seleccionar Curso</mat-label>
   <mat-select [(ngModel)]="selectedCurso">
-    <mat-option *ngFor="let curso of cursos" [value]="curso">{{ curso }}</mat-option>
+    <mat-option *ngFor="let curso of cursos" [value]="curso">{{ curso.nombre}}</mat-option>
   </mat-select>
 </mat-form-field>
 
 <mat-form-field>
-  <mat-label>Seleccionar Profesor</mat-label>
+  <mat-label>Seleccionar profesor</mat-label>
   <mat-select [(ngModel)]="selectedProfesor">
-    <mat-option *ngFor="let profesor of profesores" [value]="profesor">{{ profesor }}</mat-option>
+    <mat-option *ngFor="let profesor of profesores" [value]="profesor">{{ profesor.nombre}} {{profesor.apellido}}</mat-option>
   </mat-select>
 </mat-form-field>
 
 <div class="dialog-buttons">
-  <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-button color="primary" (click)="agregarCurse()">Agregar</button>
+  <button mat-button color="primary" (click)="asignarCurse()">Agregar</button>
 </div>
+
+<hr>
+
+<h2>Asignaciones otorgadas</h2>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> ID. </th>
+    <td class="text-center" mat-cell *matCellDef="let element"> {{element.idAsignado}} </td>
+  </ng-container> 
+
+  <ng-container matColumnDef="nombreCurso">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Curso</th>
+    <td class="text-center" mat-cell *matCellDef="let element">{{element.nombreCurso}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="profesor">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Profesor a cargo</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{element.nombreProfesor}} {{element.apellidoProfesor}} </td>
+    </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td class="text-center" mat-cell *matCellDef="let element">
+       <button mat-icon-button (click)="modificarCurse(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="eliminarCurse(element)">
+        <mat-icon >delete</mat-icon>
+      </button> 
+    </td>
+  </ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
