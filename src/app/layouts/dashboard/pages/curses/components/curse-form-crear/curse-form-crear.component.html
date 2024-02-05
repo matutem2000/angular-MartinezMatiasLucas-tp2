@@ -1,0 +1,10 @@
+<form [formGroup]="materiaForm" (ngSubmit)="onSubmit()">
+      
+    <mat-form-field>
+      <mat-label>Nombre de la Materia</mat-label>
+      <input matInput formControlName="nombre" required>
+    </mat-form-field>
+  <br>
+    <button mat-raised-button color="primary" type="submit">Guardar Materia</button>
+  </form>
+  

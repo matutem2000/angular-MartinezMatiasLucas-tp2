@@ -1,0 +1,29 @@
+<mat-drawer-container class="dashboard-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+     <h5>Menú de navegación</h5>
+     <button class="btn menu-btn" [routerLink]="'/profesores'">Profesores</button><br>
+     <button class="btn menu-btn" [routerLink]="'/estudiantes'">Estudiantes</button><br>
+      <button class="btn menu-btn" [routerLink]="'/usuarios'">Usuarios</button><br>
+      <button class="btn menu-btn" [routerLink]="'/cursos'">Cursos</button>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <!-- inicio toolbar -->
+      <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()"><!--tiene la función para abrir y cerrar el sidebar-->
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Institución educativa BLA-BLA</span>
+        <span class="example-spacer"></span>
+        
+      </mat-toolbar>
+      <!-- fin toolbar -->
+      <div >
+        <div class="p-3">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  
+  </mat-drawer-container>
+  

@@ -1,0 +1,20 @@
+<h2>Asignar estudiante a curso</h2>
+
+<mat-form-field>
+  <mat-label>Seleccionar Curso</mat-label>
+  <mat-select [(ngModel)]="selectedCurso">
+    <mat-option *ngFor="let curso of cursos" [value]="curso">{{ curso.nombre}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Seleccionar estudiante</mat-label>
+  <mat-select [(ngModel)]="selectedEstudiante">
+    <mat-option *ngFor="let estudiante of estudiantes" [value]="estudiante">{{ estudiante.nombre}} {{estudiante.apellido}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="dialog-buttons">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button color="primary" (click)="asignarCurse()">Agregar</button>
+</div>

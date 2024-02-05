@@ -1,0 +1,20 @@
+<h2>Agregar Nuevo Curso</h2>
+
+<mat-form-field>
+  <mat-label>Seleccionar Curso</mat-label>
+  <mat-select [(ngModel)]="selectedCurso">
+    <mat-option *ngFor="let curso of cursos" [value]="curso">{{ curso }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Seleccionar Profesor</mat-label>
+  <mat-select [(ngModel)]="selectedProfesor">
+    <mat-option *ngFor="let profesor of profesores" [value]="profesor">{{ profesor }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="dialog-buttons">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button color="primary" (click)="agregarCurse()">Agregar</button>
+</div>

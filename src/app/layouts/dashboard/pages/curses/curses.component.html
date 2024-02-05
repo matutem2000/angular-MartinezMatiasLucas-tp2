@@ -1,0 +1,39 @@
+
+  <h1 tituloGrande>Listado cursos</h1>
+  <button mat-icon-button color="primary" (click)="agregarNuevoCurse()">
+    <mat-icon>add</mat-icon>
+  </button>
+  
+  <table mat-table [dataSource]="dataSourceCurse" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> ID. </th>
+              <td class="text-center" mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="nombreCurso">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> Curso</th>
+              <td class="text-center" mat-cell *matCellDef="let element">{{element.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="profesor">
+                <th class="text-center" mat-header-cell *matHeaderCellDef> Profesor a cargo</th>
+                <td class="text-center" mat-cell *matCellDef="let element">{{element.profesor}} </td>
+              </ng-container>
+          
+            <ng-container matColumnDef="acciones">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> Acciones </th>
+              <td class="text-center" mat-cell *matCellDef="let element">
+                 <button mat-icon-button (click)="modificarCurse(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="eliminarCurse(element)">
+                  <mat-icon >delete</mat-icon>
+                </button> 
+              </td>
+            </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+    
+    
