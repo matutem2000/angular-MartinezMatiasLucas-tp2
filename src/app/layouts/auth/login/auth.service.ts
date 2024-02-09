@@ -34,6 +34,8 @@ authUser: Usuario | null= null;
   }
 
   logout(): void {
+    this.authUser=null;
+    this.router.navigate(['/auth/login']);
   }
 
   private openSnackBar(message: string): void {
