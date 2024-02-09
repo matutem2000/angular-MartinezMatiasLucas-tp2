@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-// import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
-// import { EliminarUsuarioComponent } from './components/eliminar-usuario/eliminar-usuario.component';
-// import { TouppercasePipe } from './pipes/touppercase.pipe';
 import { UserDataService } from '../../../../core/services/user-data.service';
 import { Usuario } from './models/usuarios.interface';
 import { LoadingService } from '../../../../core/services/loading.service';
+
 
 @Component({
   selector: 'app-usuarios',
@@ -23,13 +21,14 @@ export class UsuariosComponent implements OnInit{
 
   //Listar usuarios
   ngOnInit(): void {
-    //this.loadingService.setIsLoading(true);
+    this.loadingService.setIsLoading(true);
+
     this.userDataService.getUsuarios().subscribe({
       next: (usuario) =>{
         this.dataSource=usuario;
+        console.log(this.dataSource);
       },
       complete: () => {
-        console.log('entro a complete');
         this.loadingService.setIsLoading(false);
       }
     });

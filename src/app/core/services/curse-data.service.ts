@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { Curse } from '../../layouts/dashboard/pages/curses/models/curses.interfaces';
 import { MatDialog } from '@angular/material/dialog';
 import { LoadingService } from './loading.service';
-import { BehaviorSubject, Observable, delay, of } from 'rxjs';
+import { BehaviorSubject, map, Observable, delay, of } from 'rxjs';
+import { ModificarProfesorCursoComponent } from '../../layouts/dashboard/pages/curses/components/modificar-profesor-curso/modificar-profesor-curso.component';
+import { ModificarCursoComponent } from '../../layouts/dashboard/pages/curses/components/modificar-curso/modificar-curso.component';
+import { EliminarCursoComponent } from '../../layouts/dashboard/pages/curses/components/eliminar-curso/eliminar-curso.component';
+import { CurseFormCrearComponent } from '../../layouts/dashboard/pages/curses/components/curse-form-crear/curse-form-crear.component';
 
 
 let CURSES_DB:Curse[] = [
@@ -36,19 +40,66 @@ getCurses() {
 }
 
 //Guardar cursos
-guardarCurso(curso: Curse) {
-  this.loadingService.setIsLoading(true);
+guardarCurso(curso: Curse): Observable<Curse[]> {
+  const dialogRef = this.dialog.open(CurseFormCrearComponent, {
+    data: { curso },
+  });
 
-  // Simula una operación asíncrona (puedes omitir esto si la adición del curso es instantánea)
-  setTimeout(() => {
-    CURSES_DB.push(curso);
+  return dialogRef.afterClosed().pipe(
+    map((cursoNuevo: Curse) => {
+      if (cursoNuevo) {
+        console.log('Curso existente:', cursoNuevo);
+        // Modificar el curso en la base de datos
+        
+      }
+      console.log('es un curso nuevo');
+      return [...CURSES_DB];
+    })
+  );
+  
+} 
 
-    // Después de agregar el curso, detén el indicador de carga
-    this.loadingService.setIsLoading(false);
+  modificarCurso(curso: Curse): Observable<Curse[]> {
+    console.log('Curso recibido a modificar', curso);
+    const dialogRef = this.dialog.open(ModificarCursoComponent, {
+      data: { curso },
+    });
 
-    // Notifica a Angular sobre el cambio en el array
-    this.curseSubject.next([...CURSES_DB]);
-  }, 3000);
+    return dialogRef.afterClosed().pipe(
+      map((cursoModificado: Curse) => {
+        if (cursoModificado) {
+          console.log('Datos del curso modificado:', cursoModificado);
+          // Modificar el curso en la base de datos
+          CURSES_DB = CURSES_DB.map((c) =>
+            c.id === cursoModificado.id ? { ...c, ...cursoModificado } : c
+          );
+          console.log('El nuevo array de cursos con la modificación', CURSES_DB);
+        }
+        return [...CURSES_DB];
+      })
+    );
+    
   }
 
+  // Eliminar cuso
+eliminarCurso(curso: Curse): Observable<Curse[]> {
+  //console.log('eliminar en user-data.service- apreté botón');
+ const dialogRef = this.dialog.open(EliminarCursoComponent, {
+   data: { curso },
+ });
+ 
+ return dialogRef.afterClosed().pipe(
+   map((eliminado: boolean) => {
+     if (eliminado) {
+       // Eliminar el curso del dataSource
+       CURSES_DB = CURSES_DB.filter(u => u.id !== curso.id);
+     }
+     return [...CURSES_DB];
+   })
+ );
+
 }
+
+
+}
+

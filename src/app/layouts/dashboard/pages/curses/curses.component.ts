@@ -13,17 +13,18 @@ import { CurseFormCrearComponent } from './components/curse-form-crear/curse-for
 })
 export class CursesComponent {
 
-  displayedColumns: string[] = ['id', 'nombreCurso', 'profesor', 'acciones'];
+  displayedColumns: string[] = ['id', 'nombreCurso', 'acciones'];
   dataSourceCurse: Curse[] = [];
-
+  cursos: Curse[] = [];
     constructor(public dialog: MatDialog, private curseDataService: CurseDataService, private loadingService: LoadingService){}
 
   //Listar cursos
   ngOnInit(): void {
-    //this.loadingService.setIsLoading(true);
+    this.loadingService.setIsLoading(true);
     this.curseDataService.getCurses().subscribe({
       next: (cursos) =>{
         this.dataSourceCurse=cursos;
+        console.log(this.dataSourceCurse);
       },
       complete: () => {
         this.loadingService.setIsLoading(false);
@@ -34,46 +35,47 @@ export class CursesComponent {
   //Agregar cursos
   agregarNuevoCurse(){
     const dialogRef = this.dialog.open(CurseFormCrearComponent, {
-      width: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Aquí puedes manejar el resultado si es necesario (result.curso y result.profesor)
-        // Puedes agregar lógica para agregar un nuevo curso según los datos seleccionados
+        this.dataSourceCurse =[...result];
+      console.log('cursos al dialogo', result);  
       }
     });
   };
  
   //Eliminar usuario
-  eliminarCurse(curse: Curse): void {
-    /* this.loadingService.setIsLoading(true);
-    this.userDataService
-    .eliminarUsuario({...usuario}).subscribe({
-      next: (usuarios) =>{
-        //console.log('Usuarios actualizados:', usuarios);
-        this.dataSource=[...usuarios];
-      },
-      complete:() =>{
-        this.loadingService.setIsLoading(false);
-      }
-    }); */
+  eliminarCurse(curso: Curse): void {
+      this.loadingService.setIsLoading(true);
+      this.curseDataService
+      .eliminarCurso({...curso}).subscribe({
+        next: (curso) =>{
+          //console.log('Usuarios actualizados:', usuarios);
+          this.dataSourceCurse=[...curso];
+        },
+        complete:() =>{
+          this.loadingService.setIsLoading(false);
+        }
+      });
+  
 }
 
 
   //MOdificar usuario
-  modificarCurse(curse: Curse): void {
-    /* this.loadingService.setIsLoading(true);
-     this.userDataService
-    .modificarUsuario({...usuario}).subscribe({
-      next: (usuarios) =>{
+  modificarCurso(curso: Curse): void {
+    this.loadingService.setIsLoading(true);
+     this.curseDataService
+    .modificarCurso({...curso}).subscribe({
+      next: (curso) =>{
         //console.log('Usuarios actualizados:', usuarios);
-        this.dataSource=[...usuarios];
+        this.dataSourceCurse=[...curso];
       },
       complete:() =>{
         this.loadingService.setIsLoading(false);
       }
-    });  */
+    }); 
   }
 
 

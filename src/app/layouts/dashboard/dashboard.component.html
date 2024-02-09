@@ -1,10 +1,10 @@
 <mat-drawer-container class="dashboard-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
      <h5>Menú de navegación</h5>
-     <button class="btn menu-btn" [routerLink]="'/profesores'">Profesores</button><br>
-     <button class="btn menu-btn" [routerLink]="'/estudiantes'">Estudiantes</button><br>
-      <button class="btn menu-btn" [routerLink]="'/usuarios'">Usuarios</button><br>
-      <button class="btn menu-btn" [routerLink]="'/cursos'">Cursos</button>
+     <button class="btn menu-btn" [routerLink]="'profesores'" disabled>Profesores</button><br>
+     <button class="btn menu-btn" [routerLink]="'estudiantes'" disabled>Estudiantes</button><br>
+      <button class="btn menu-btn" [routerLink]="'usuarios'">Usuarios</button><br>
+      <button class="btn menu-btn" [routerLink]="'cursos'">Cursos</button>
     </mat-drawer>
   
     <div class="example-sidenav-content">

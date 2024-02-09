@@ -1,0 +1,11 @@
+<h5 class="text-center mt-3 mx-3" mat-dialog-title>Modificar curso</h5>
+
+<form class="m-4 " [formGroup]="cursoFormModif" (ngSubmit)="onSubmit()" >
+    <mat-form-field >
+        <mat-label>Nombre curso</mat-label>
+        <input formControlName="nombre" matInput type="text" >
+      </mat-form-field>
+    
+     
+      <button  mat-flat-button color="primary">Guardar</button>
+</form>

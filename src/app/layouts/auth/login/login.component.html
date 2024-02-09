@@ -1,19 +1,27 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <input matInput placeholder="Nombre de usuario" formControlName="username">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <input matInput type="password" placeholder="Contraseña" formControlName="password">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-label>Rol</mat-label>
-      <mat-select formControlName="role">
-        <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Iniciar Sesión</button>
-  </form>
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Inicio de sesión</h2>
+      <mat-form-field>
+        <input matInput placeholder="Nombre de usuario" formControlName="email">
+        <mat-error>{{
+          loginForm.get("email")?.errors| autenticationErrors
+          }}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput [type]="mostrarPass ? 'text' : 'password'" placeholder="Contraseña" formControlName="password">
+        <mat-error>{{
+          loginForm.get("password")?.errors| autenticationErrors
+          }}</mat-error>
+        <button (click)="mostrarPass = !mostrarPass" matSuffix mat-icon-button>
+          <mat-icon>{{ mostrarPass ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+      
+     
+      <button mat-raised-button color="primary" type="submit">Iniciar Sesión</button>
+    </form>
+</div>
+
+
   

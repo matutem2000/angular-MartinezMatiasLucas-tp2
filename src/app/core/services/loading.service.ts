@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Subject } from "rxjs/internal/Subject";
 
-@Injectable({ providedIn: 'root'})
+@Injectable()
 export class LoadingService {
    private loadingTriggered$ = new BehaviorSubject<boolean>(false);
 

@@ -15,6 +15,7 @@ import { EliminarUsuarioComponent } from './components/eliminar-usuario/eliminar
 import { TouppercasePipe } from './pipes/touppercase.pipe';
 import { UserDataService } from '../../../../core/services/user-data.service';
 import { LoadingService } from '../../../../core/services/loading.service';
+import { UsuariosRoutingModule } from './usuarios-routing.module';
 
 
 
@@ -37,7 +38,8 @@ import { LoadingService } from '../../../../core/services/loading.service';
     MatIconModule,
     MatSelectModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UsuariosRoutingModule
   ],
   exports: [
     UsuariosComponent

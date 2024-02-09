@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CurseDataService } from '../../../../../../core/services/curse-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Curse } from '../../models/curses.interfaces';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class CurseFormCrearComponent  {
     });
   }
   onSubmit() {
+    console.log('entre al metodo del componente curse-form-crear');
     if (this.materiaForm.valid) {
       const nombre = this.materiaForm.value.nombre;
 
@@ -28,7 +30,7 @@ export class CurseFormCrearComponent  {
         const nuevoId = curses.length + 1;
 
         // Crear el nuevo curso
-        const nuevoCurso = { id: nuevoId, nombre };
+        const nuevoCurso: Curse = { id: nuevoId, nombre };
           console.log(nuevoCurso);
         // Guardar el nuevo curso en tu servicio de datos
         this.curseDataService.guardarCurso(nuevoCurso);

@@ -1,0 +1,11 @@
+<h5 class="text-center mt-3 mx-3" mat-dialog-title>Eliminar curso</h5>
+
+<form class="m-4 " [formGroup]="cursoFormEliminar" (click)="confirmarEliminar()" >
+    <mat-form-field >
+        <mat-label>Nombre curso</mat-label>
+        <input formControlName="nombre" matInput type="text" readonly >
+      </mat-form-field>
+    <br>
+     
+      <button  mat-flat-button color="danger">Eliminar</button>
+</form>

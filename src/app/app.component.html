@@ -1,9 +1,9 @@
-<div *ngIf="isLoading">
-    ... Cargando
+<div *ngIf="isLoading" class="loading-overlay" >
+    <mat-spinner></mat-spinner>
+
 </div>
 <div >
-    <app-dashboard ></app-dashboard>
+    <router-outlet></router-outlet>
 </div>
 
 
-<!-- <router-outlet></router-outlet> -->

@@ -14,16 +14,11 @@
               <th class="text-center" mat-header-cell *matHeaderCellDef> Curso</th>
               <td class="text-center" mat-cell *matCellDef="let element">{{element.nombre}} </td>
             </ng-container>
-
-            <ng-container matColumnDef="profesor">
-                <th class="text-center" mat-header-cell *matHeaderCellDef> Profesor a cargo</th>
-                <td class="text-center" mat-cell *matCellDef="let element">{{element.profesor}} </td>
-              </ng-container>
-          
+        
             <ng-container matColumnDef="acciones">
               <th class="text-center" mat-header-cell *matHeaderCellDef> Acciones </th>
               <td class="text-center" mat-cell *matCellDef="let element">
-                 <button mat-icon-button (click)="modificarCurse(element)">
+                 <button mat-icon-button (click)="modificarCurso(element)">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button (click)="eliminarCurse(element)">

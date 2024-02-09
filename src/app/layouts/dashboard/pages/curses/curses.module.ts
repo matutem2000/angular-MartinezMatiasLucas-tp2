@@ -14,6 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ModificarProfesorCursoComponent } from './components/modificar-profesor-curso/modificar-profesor-curso.component';
 import { ModificarEstudianteCursoComponent } from './components/modificar-estudiante-curso/modificar-estudiante-curso.component';
+import { ModificarCursoComponent } from './components/modificar-curso/modificar-curso.component';
+import { EliminarCursoComponent } from './components/eliminar-curso/eliminar-curso.component';
+import { CoursesRoutingModule } from './curses-routing.module';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { ModificarEstudianteCursoComponent } from './components/modificar-estudi
     AsignacionProfesorMateriaComponent,
     InscripcionEstudianteMateriaComponent,
     ModificarProfesorCursoComponent,
-    ModificarEstudianteCursoComponent
+    ModificarEstudianteCursoComponent,
+    ModificarCursoComponent,
+    EliminarCursoComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +39,8 @@ import { ModificarEstudianteCursoComponent } from './components/modificar-estudi
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    CoursesRoutingModule
   ]
 })
 export class CursesModule { }

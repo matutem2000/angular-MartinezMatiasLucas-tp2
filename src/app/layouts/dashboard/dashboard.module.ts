@@ -8,15 +8,15 @@ import {MatIconModule} from '@angular/material/icon';
 import { UsuariosModule } from './pages/usuarios/usuarios.module';
 import { RouterModule } from '@angular/router';
 import { CursesModule } from './pages/curses/curses.module';
-
-
-
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
+    NotFoundComponent,
 
   ],
   imports: [
@@ -27,7 +27,8 @@ import { CursesModule } from './pages/curses/curses.module';
     MatIconModule,
     UsuariosModule,
     RouterModule,
-    CursesModule
+    CursesModule,
+    DashboardRoutingModule
     
   ],
   exports: [
